@@ -122,6 +122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224746562}
   - component: {fileID: 224746561}
+  - component: {fileID: 224746563}
   m_Layer: 0
   m_Name: AirConsole
   m_TagString: Untagged
@@ -158,6 +159,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &224746563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 224746560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59b0429a600ae9c4c98595086dbe20de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  players:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &283332568
 GameObject:
   m_ObjectHideFlags: 0
@@ -358,12 +374,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 651461925}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59b0429a600ae9c4c98595086dbe20de, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e16ac706bbb7f94aa4cb8dc00047dcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  players:
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!4 &651461927
 Transform:
   m_ObjectHideFlags: 0
