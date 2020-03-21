@@ -5,16 +5,75 @@
   <script type="text/javascript" src="https://www.airconsole.com/api/airconsole-1.7.0.js"></script>
   <style type=text/css>
   /* the style sheet dictates what our elements (buttons, backgrounds etc.) will look like. */
-    #interact-button{
-      background-image: url("button.png");
-      position: absolute;
-      top: 20%;
-      left: 10%;
-      width: 80%;
-      height: 60%;
-      background-size: contain;
-      background-repeat: no-repeat;
-    }
+  #up-button{
+    //background-image: url("button.png");
+    background-color: gray;
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    width: 10%;
+    height: 10%;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  #down-button{
+    //background-image: url("button.png");
+    background-color: gray;
+    position: absolute;
+    top: 70%;
+    left: 70%;
+    width: 10%;
+    height: 10%;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  #left-button{
+    //background-image: url("button.png");
+    background-color: gray;
+    position: absolute;
+    top: 80%;
+    left: 60%;
+    width: 10%;
+    height: 10%;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  #right-button{
+    //background-image: url("button.png");
+    background-color: gray;
+    position: absolute;
+    top: 60%;
+    left: 60%;
+    width: 10%;
+    height: 10%;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  
+  #action-button{
+    //background-image: url("button.png");
+    background-color: gray;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    width: 10%;
+    height: 35%;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  #switch-button{
+    //background-image: url("button.png");
+    background-color: gray;
+    position: absolute;
+    top: 10%;
+    left: 70%;
+    width: 10%;
+    height: 35%;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+    
 
   </style>
   
@@ -61,6 +120,13 @@
 </head>
 <body onload="window.app = new App()">
   <!-- Add your HTML elements here -->
-  <div id="interact-button" ontouchstart="window.app.sendMessageToScreen('interact')"></div>
+  
+  <div id="up-button" ontouchstart="window.app.sendMessageToScreen('up')"></div>
+  <div id="down-button" ontouchstart="window.app.sendMessageToScreen('down')"></div>
+  <div id="left-button" ontouchstart="window.app.sendMessageToScreen('left')"></div>
+  <div id="right-button" ontouchstart="window.app.sendMessageToScreen('right')"></div>
+  
+  <div id="action-button" ontouchstart="window.app.sendMessageToScreen('action')"></div>
+  <div id="switch-button" ontouchstart="window.app.sendMessageToScreen('switch')"></div>
 </body>
 </html>
