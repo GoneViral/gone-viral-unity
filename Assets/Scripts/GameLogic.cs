@@ -18,14 +18,28 @@ public class GameLogic : MonoBehaviour
         Debug.Log("message from " + fromDeviceID + ", data: " + data);
         if(data["action"] != null && data["action"].ToString().Equals("action"))
         {
-            Camera.main.backgroundColor = Color.green;
+            // in quarantaene schicken
         }
         else if (data["action"] != null && data["action"].ToString().Equals("switch"))
         
         {
-            Camera.main.backgroundColor = Color.red;
+            // spieler wechseln
         }
     }
+    
+    //methode quarantaene
+    //wenn andere personen im umfeld radius x der gespielten person sind
+    //entferne andere spieler
+    //setze cooldown?
+    static void setQuarantaene(GameObject obj, Vector3 center)
+    {
+        
+    }
+    
+    //methode hustet  -- aufzurufen ueber timeline oder einfach wenn sie sich bewegen?
+    //fuer alle gameobjects
+    //if infected == true
+    // OnHustArea aufrufen
 
     // Wird aufgerufen von infizierten Spieler wenn er hustet
     static void OnHustArea(GameObject obj, float fDirection, Vector3 center, float fRadius)
