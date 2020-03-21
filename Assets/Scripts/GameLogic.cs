@@ -36,11 +36,8 @@ public class GameLogic : MonoBehaviour
         
     }
     
-    //methode hustet  -- aufzurufen ueber timeline oder einfach wenn sie sich bewegen?
-    //fuer alle gameobjects
-    //if infected == true
-    // OnHustArea aufrufen
 
+    //TODO implement showsSymptoms Boolean
     // Wird aufgerufen von infizierten Spieler wenn er hustet
     static void OnHustArea(GameObject obj, float fDirection, Vector3 center, float fRadius)
     {
