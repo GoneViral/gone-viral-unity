@@ -63,6 +63,11 @@ public class AirConsoleConnector : MonoBehaviour
         for(int i = 0; i < 2; i++){
             if(players[i].controllerId == -1 ){
                 players[i].controllerId = fromDeviceID;
+                if(players[i].type == PlayerType.Virus){
+                    AirConsole.instance.Message (fromDeviceID, "virus");
+                }else if(players[i].type == PlayerType.Human){
+                    AirConsole.instance.Message (fromDeviceID, "human");
+                }
                 return;
             }
         }
