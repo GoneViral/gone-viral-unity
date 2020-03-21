@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using NDream.AirConsole;
 using Newtonsoft.Json.Linq;
+using UnityEngine.SceneManagement;
 
 public class AirConsoleConnector : MonoBehaviour
 {
     public PlayerController[] players = new PlayerController[2];
+
+    private bool firstPlayerConnected = false;
     void Awake()
     {
         AirConsole.instance.onMessage += OnMessage;
@@ -63,6 +66,11 @@ public class AirConsoleConnector : MonoBehaviour
         for(int i = 0; i < 2; i++){
             if(players[i].controllerId == -1 ){
                 players[i].controllerId = fromDeviceID;
+                if(!firstPlayerConnected){
+                    SceneManager.LoadScene("Level", LoadSceneMode.Additive);
+                    firstPlayerConnected = true;
+                } 
+
                 if(players[i].type == PlayerType.Virus){
                     AirConsole.instance.Message (fromDeviceID, "virus");
                 }else if(players[i].type == PlayerType.Human){
