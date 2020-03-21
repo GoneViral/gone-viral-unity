@@ -16,7 +16,8 @@ public class PlayerController : MonoBehaviour
     public PlayerType type;
 
     public void Move(Vector3 direction){
-        controlledObject.transform.position += direction;
+        if(controlledObject != null)
+            controlledObject.transform.position += direction;
     }
 
 
