@@ -1,0 +1,101 @@
+# =============== #
+# Unity generated #
+# =============== #
+/[Tt]emp/
+/[Ll]ibrary/
+/[Bb]uild/
+/[Bb]uilds/
+/[Oo]bj/
+/[Ll]ogs/
+
+
+# =============== #
+# Uncomment to never ignore Asset meta data #
+# =============== #
+#![Aa]ssets/**/*.meta
+
+
+# =============== #
+# Uncomment to ignore the asset store tools plugin #
+# =============== #
+# [Aa]ssets/AssetStoreTools*
+
+
+# =============== #
+# Uncomment to ignore TextMesh Pro files #
+# =============== #
+#[Aa]ssets/TextMesh*Pro/
+
+
+# ===================================== #
+# Visual Studio cache directory #
+# ===================================== #
+.vs/
+
+
+# ===================================== #
+# Visual Studio / MonoDevelop / generated / Project Files #
+# ===================================== #
+ExportedObj/
+*.svd
+*.userprefs
+*.csproj
+*.pidb
+*.pdb
+*.suo
+*.sln
+*.user
+*.mdb
+*.opendb
+*.unityproj
+*.booproj
+*.pidb.meta
+*.tmp
+*.VC.db
+*.opendb
+
+
+# ===================================== #
+# Unity3D generated meta files #
+# ===================================== #
+*.pidb.meta
+*.pdb.meta
+*.mdb.meta
+
+
+# ===================================== #
+# Unity3D generated file on crash reports #
+# ===================================== #
+sysinfo.txt
+
+
+# ===================================== #
+# Builds #
+# ===================================== #
+*.apk
+*.unitypackage
+
+
+# ============ #
+# OS generated #
+# ============ #
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+
+# ============ #
+# Dangerous Folder .Meta Files #
+# add folders here if they are NOT supposed to appear in Version Control #
+# each folder requires two lines - one for folder, one for .meta file!!! #
+# like this #
+# Assets/FOLDERNAME/FOLDERNAME    #
+# Assets/FOLDERNAME/FOLDERNAME.meta #
+# ============ #
+Assets/StreamingAssets/build_info.txt
+Assets/StreamingAssets/build_info.txt.meta
+
