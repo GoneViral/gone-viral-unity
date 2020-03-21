@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using NDream.AirConsole;
 using Newtonsoft.Json.Linq;
+using UnityEngine.SceneManagement;
 
 public class AirConsoleConnector : MonoBehaviour
 {
     public PlayerController[] players = new PlayerController[2];
+
+    private bool firstPlayerConnected = false;
     void Awake()
     {
         AirConsole.instance.onMessage += OnMessage;
@@ -16,12 +19,12 @@ public class AirConsoleConnector : MonoBehaviour
         GameObject playerHuman = new GameObject("HumanPlayerController");
         players[0] = playerHuman.AddComponent<PlayerController>();
         players[0].type = PlayerType.Human;
-        players[0].controlledObject = GameObject.Find("Player");
+        
 
         GameObject playerVirus = new GameObject("VirusPlayerController");
         players[1] = playerVirus.AddComponent<PlayerController>();
         players[1].type = PlayerType.Virus;
-        players[1].controlledObject = GameObject.Find("Virus");
+        
     }
 
     void OnMessage(int fromDeviceID, JToken data){
@@ -63,6 +66,15 @@ public class AirConsoleConnector : MonoBehaviour
         for(int i = 0; i < 2; i++){
             if(players[i].controllerId == -1 ){
                 players[i].controllerId = fromDeviceID;
+                if(!firstPlayerConnected){
+                    StartCoroutine(LoadYourAsyncScene());
+                    firstPlayerConnected = true;
+                } 
+                if(players[i].type == PlayerType.Virus){
+                    AirConsole.instance.Message (fromDeviceID, "virus");
+                }else if(players[i].type == PlayerType.Human){
+                    AirConsole.instance.Message (fromDeviceID, "human");
+                }
                 return;
             }
         }
@@ -84,5 +96,24 @@ public class AirConsoleConnector : MonoBehaviour
         if(AirConsole.instance != null){
             AirConsole.instance.onMessage -= OnMessage;
         }
+    }
+
+
+    IEnumerator LoadYourAsyncScene()
+    {
+        // The Application loads the Scene in the background as the current Scene runs.
+        // This is particularly good for creating loading screens.
+        // You could also load the Scene by using sceneBuildIndex. In this case Scene2 has
+        // a sceneBuildIndex of 1 as shown in Build Settings.
+
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("Level", LoadSceneMode.Additive);
+
+        // Wait until the asynchronous scene fully loads
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+        players[0].controlledObject = GameObject.Find("PlayerStart");
+        players[1].controlledObject = GameObject.Find("VirusStart");
     }
 }
