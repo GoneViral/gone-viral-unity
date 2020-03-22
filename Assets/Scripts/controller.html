@@ -11,7 +11,7 @@
       margin: 0;
       background-color: #333;
       font-family: 'Inconsolata', monospace;  
-      font-size: 1.5em; 
+      font-size: 1em; 
       color: #FFF;      
   }
 
@@ -135,6 +135,7 @@
     .text {
       color: #FFF;
       padding: 2%;
+      background-size: contain;
     }
     
 
@@ -149,8 +150,8 @@
 
     <div class="top-bar"  style="background-color: blue">
       <div class="text">
-          MENSCH: Dein Ziel ist es den Virus einzudämmen! <br/>
-          Setze Gruppen unter Quarantäne. Bleib gesund!
+          MENSCH: Dein Ziel ist es den Virus einzud&auml;mmen! <br/>
+          Setze Gruppen unter Quarant&auml;ne. Bleib gesund!
       </div>
     </div>
     
@@ -159,7 +160,7 @@
     <div class="left-button" ontouchstart="window.app.sendMessageToScreen('left')" style="background-color: blue"></div>
     <div class="right-button" ontouchstart="window.app.sendMessageToScreen('right')" style="background-color: blue"></div>
 
-    <div class="action-button" ontouchstart="window.app.sendMessageToScreen('action')" style="background-color: blue">QUARANTÄNE</div>
+    <div class="action-button" ontouchstart="window.app.sendMessageToScreen('action')" style="background-color: blue">QUARANT&Auml;NE</div>
     <div class="switch-button" ontouchstart="window.app.sendMessageToScreen('switch')" style="background-color: blue">WECHSELE MENSCH</div>
   </div>
 
@@ -181,8 +182,8 @@
   </div>
 
 
-<!-->
-  <div id ="start-screen">
+
+  <!-- <div id ="start-screen">
       <div class="top-bar"  style="background-color: grey">
           <div class="text">
               GONE VIRAL <br/>
@@ -226,8 +227,8 @@
       </div>
 
       <div class="start-button" ontouchstart="window.app.sendMessageToScreen('start')" style="background-color: grey">RESTART</div>    
-  </div>
--->
+  </div> -->
+
 
 </body>
 
