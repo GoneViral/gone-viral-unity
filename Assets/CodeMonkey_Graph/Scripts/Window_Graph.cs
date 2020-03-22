@@ -23,11 +23,7 @@ public class Window_Graph : MonoBehaviour {
 
     [SerializeField] private Sprite dotSprite;
     private RectTransform graphContainer;
-    private RectTransform labelTemplateX;
     private RectTransform labelTemplateY;
-    private RectTransform dashContainer;
-    private RectTransform dashTemplateX;
-    private RectTransform dashTemplateY;
     private List<GameObject> gameObjectList;
     private List<IGraphVisualObject> graphVisualObjectList;
     private List<RectTransform> yLabelList;
@@ -45,11 +41,7 @@ public class Window_Graph : MonoBehaviour {
         instance = this;
         // Grab base objects references
         graphContainer = transform.Find("graphContainer").GetComponent<RectTransform>();
-        labelTemplateX = graphContainer.Find("labelTemplateX").GetComponent<RectTransform>();
         labelTemplateY = graphContainer.Find("labelTemplateY").GetComponent<RectTransform>();
-        dashContainer = graphContainer.Find("dashContainer").GetComponent<RectTransform>();
-        dashTemplateX = dashContainer.Find("dashTemplateX").GetComponent<RectTransform>();
-        dashTemplateY = dashContainer.Find("dashTemplateY").GetComponent<RectTransform>();
 
         startYScaleAtZero = true;
         gameObjectList = new List<GameObject>();
@@ -86,9 +78,9 @@ public class Window_Graph : MonoBehaviour {
         FunctionPeriodic.Create(() => {
             //int index = UnityEngine.Random.Range(0, valueList.Count);
             //UpdateValue(index, valueList[index] + UnityEngine.Random.Range(1, 3));
-            addValue(10);
+            addValue(GameLogic.instance.infectedCount);
             ShowGraph(valueList, lineGraphVisual, valueList.Count, (int _i) => "Day " + (_i + 1), (float _f) => Mathf.RoundToInt(_f).ToString());
-        }, 1f);
+        }, 10f);
     }
     
 
@@ -164,27 +156,13 @@ public class Window_Graph : MonoBehaviour {
             
             IGraphVisualObject graphVisualObject = graphVisual.CreateGraphVisualObject(new Vector2(xPosition, yPosition), xSize);
             graphVisualObjectList.Add(graphVisualObject);
-
-            // Duplicate the x label template
-            RectTransform labelX = Instantiate(labelTemplateX);
-            labelX.SetParent(graphContainer, false);
-            labelX.gameObject.SetActive(true);
-            labelX.anchoredPosition = new Vector2(xPosition, -7f);
-            labelX.GetComponent<Text>().text = getAxisLabelX(i);
-            gameObjectList.Add(labelX.gameObject);
             
-            // Duplicate the x dash template
-            RectTransform dashX = Instantiate(dashTemplateX);
-            dashX.SetParent(dashContainer, false);
-            dashX.gameObject.SetActive(true);
-            dashX.anchoredPosition = new Vector2(xPosition, -3f);
-            gameObjectList.Add(dashX.gameObject);
 
             xIndex++;
         }
 
         // Set up separators on the y axis
-        int separatorCount = 10;
+        int separatorCount = 5;
         for (int i = 0; i <= separatorCount; i++) {
             // Duplicate the label template
             RectTransform labelY = Instantiate(labelTemplateY);
@@ -196,12 +174,7 @@ public class Window_Graph : MonoBehaviour {
             yLabelList.Add(labelY);
             gameObjectList.Add(labelY.gameObject);
 
-            // Duplicate the dash template
-            RectTransform dashY = Instantiate(dashTemplateY);
-            dashY.SetParent(dashContainer, false);
-            dashY.gameObject.SetActive(true);
-            dashY.anchoredPosition = new Vector2(-4f, normalizedValue * graphHeight);
-            gameObjectList.Add(dashY.gameObject);
+           
         }
     }
 
