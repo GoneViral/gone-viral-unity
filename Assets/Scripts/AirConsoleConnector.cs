@@ -60,7 +60,12 @@ public class AirConsoleConnector : MonoBehaviour
         }else if (data["action"] != null && data["action"].ToString().Equals("switch")){
             for(int i = 0; i < 2; i++){
                 if(players[i].controllerId == fromDeviceID ){
-                    players[i].SwitchControlled();
+                    int newCounter = players[i].SwitchControlled();
+                    var message = new {
+                        action = "setNPC",
+                        info = new {id = newCounter}
+                    };
+                    AirConsole.instance.Message (fromDeviceID, message);
                     return;
                 }
             }

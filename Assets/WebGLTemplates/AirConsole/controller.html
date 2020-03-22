@@ -154,6 +154,9 @@
         container_1.style.display = 'block';
         container_2.style.display = 'none';
       }
+      else if(data["action"] == "setNPC"){
+        console.log("new controlled npc is " + data["info"]["id"]);
+      }
     };
     
     /*
