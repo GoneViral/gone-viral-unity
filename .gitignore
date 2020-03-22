@@ -98,4 +98,11 @@ Thumbs.db
 # ============ #
 Assets/StreamingAssets/build_info.txt
 Assets/StreamingAssets/build_info.txt.meta
-
+Assets/ProBuilder Data.meta
+Assets/Polybrush Data.meta
+Assets/ProBuilder Data
+Assets/Polybrush Data
+ProjectSettings/Packages/com.unity.polybrush
+ProjectSettings/Packages/com.unity.probuilder
+ProjectSettings/Packages/com.unity.polybrush/Settings.json
+ProjectSettings/Packages/com.unity.probuilder/Settings.json
