@@ -36,8 +36,11 @@ public class PlayerController : MonoBehaviour
             }
             possibleHumansID++;
             if(possibleHumansID > possibleHumans.Length -1 ) possibleHumansID = 0;
-
             controlledObject = possibleHumans[possibleHumansID].gameObject;
+            foreach(HumanPlayable human in possibleHumans){
+                human.hair.material.color = Color.cyan;
+            }
+            controlledObject.GetComponent<HumanPlayable>().hair.material.color = Color.blue;
         }
         else if(type == PlayerType.Virus){
             possibleVirus = GameObject.FindObjectsOfType<VirusPlayable>();

@@ -138,6 +138,7 @@ public class AirConsoleConnector : MonoBehaviour
             yield return null;
         }
         players[0].controlledObject = GameObject.Find("PlayerStart");
+        players[0].controlledObject.GetComponent<HumanPlayable>().hair.material.color = Color.blue;
         players[1].controlledObject = GameObject.Find("VirusStart");
 
         InvokeRepeating("CheckGameOver", 0f, 0.5f);

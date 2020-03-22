@@ -12,14 +12,9 @@ public class HumanPlayable : MonoBehaviour
         hair = hairGO.GetComponent<Renderer>();
 
         if(hair != null){
-            hair.material.color = Color.blue;
+            hair.material.color = Color.cyan;
         }
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
