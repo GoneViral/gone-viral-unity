@@ -148,11 +148,11 @@
     this.airconsole.onMessage = function(from, data) {
       console.log("onMessage", from, data);
       if(data == "virus"){
-        container_1.style.display = 'block';
-        container_2.style.display = 'none';
-      }else if (data == "human"){
         container_1.style.display = 'none';
         container_2.style.display = 'block';
+      }else if (data == "human"){
+        container_1.style.display = 'block';
+        container_2.style.display = 'none';
       }
     };
     
