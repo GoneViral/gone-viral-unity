@@ -193,7 +193,7 @@
 
     <div class="id-button" style="background-color: red">
       DEINE VIRUS ID: 
-      <p id="virus-player-id"></p>
+      <p id="virus-player-id">2</p>
     </div>
         
     <div class="switch-button" ontouchstart="window.app.sendMessageToScreen('switch')" style="background-color: red">WECHSELE ERKRANKTEN</div>
@@ -281,7 +281,7 @@ var container_1 = document.getElementById("gamepad-1");
       else if(data["action"] == "setNPC"){
         console.log("new controlled npc is " + data["info"]["id"]);
           var element = document.getElementById("virus-player-id");
-          element.innerHTML = data["id"];
+          element.innerHTML = data["info"]["id"];
       }else if(data["action"] == "gameOver"){
         container_1.style.display = 'none';
         container_2.style.display = 'none';
