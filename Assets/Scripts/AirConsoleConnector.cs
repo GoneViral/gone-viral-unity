@@ -57,6 +57,13 @@ public class AirConsoleConnector : MonoBehaviour
                     return;
                 }
             }
+        }else if (data["action"] != null && data["action"].ToString().Equals("switch")){
+            for(int i = 0; i < 2; i++){
+                if(players[i].controllerId == fromDeviceID ){
+                    players[i].SwitchControlled();
+                    return;
+                }
+            }
         }
     }
 
