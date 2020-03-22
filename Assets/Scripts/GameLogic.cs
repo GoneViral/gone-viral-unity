@@ -12,6 +12,8 @@ public class GameLogic : MonoBehaviour
     public int infectedCount = 1;
     public int quarantinedCount = 0;
 
+    public float playtime = 120f;
+
     void Awake ()
     {
         if (instance == null)

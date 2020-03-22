@@ -60,7 +60,12 @@ public class AirConsoleConnector : MonoBehaviour
         }else if (data["action"] != null && data["action"].ToString().Equals("switch")){
             for(int i = 0; i < 2; i++){
                 if(players[i].controllerId == fromDeviceID ){
-                    players[i].SwitchControlled();
+                    int newCounter = players[i].SwitchControlled();
+                    var message = new {
+                        action = "setNPC",
+                        info = new {id = newCounter}
+                    };
+                    AirConsole.instance.Message (fromDeviceID, message);
                     return;
                 }
             }
@@ -132,5 +137,34 @@ public class AirConsoleConnector : MonoBehaviour
         }
         players[0].controlledObject = GameObject.Find("PlayerStart");
         players[1].controlledObject = GameObject.Find("VirusStart");
+
+        InvokeRepeating("CheckGameOver", 0f, 0.5f);
+    }
+
+
+    private void CheckGameOver(){
+        GameLogic.instance.playtime -= 0.5f;
+        if(GameLogic.instance.playtime == 0){
+            int winnerId = 0;
+            if(GameLogic.instance.infectedCount >= GameLogic.instance.NPCsCountTotal){
+                //Virus win
+                winnerId = players[1].controllerId;
+            }else if(GameLogic.instance.quarantinedCount <= GameLogic.instance.NPCsCountTotal/2){
+                //Virus win
+                winnerId = players[1].controllerId;
+            }else{
+                //Human win
+                winnerId = players[0].controllerId;
+            }
+
+            for(int i = 0; i < 2; i++){
+                var message = new {
+                    action = "gameOver",
+                    win = players[i].controllerId == winnerId
+                };
+                AirConsole.instance.Message (players[i].controllerId, message);
+            }
+            CancelInvoke();
+        }
     }
 }

@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
         }      
     }
 
-    public void SwitchControlled(){
+    public int SwitchControlled(){
         if(type == PlayerType.Human){
             if(possibleHumans == null || possibleHumans.Length == 0){
                 possibleHumans = GameObject.FindObjectsOfType<HumanPlayable>();
@@ -45,6 +45,8 @@ public class PlayerController : MonoBehaviour
             int index = Random.Range(0, possibleVirus.Length);
             controlledObject = possibleHumans[index].gameObject;
         }
+        int counter = controlledObject.GetComponent<People>().counter;
+        return counter;
     }
 
     public void Action(){
