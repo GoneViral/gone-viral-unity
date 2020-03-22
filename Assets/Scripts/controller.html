@@ -119,7 +119,7 @@
 
   <div id ="gamepad-2">
 
-    <div class="top-bar"  style="background-color: blue"></div>
+    <div class="top-bar"  style="background-color: red"></div>
 
     <div class="up-button" ontouchstart="window.app.sendMessageToScreen('up')" style="background-color: red"></div>
    <div class="down-button" ontouchstart="window.app.sendMessageToScreen('down')" style="background-color: red"></div>
@@ -151,7 +151,7 @@
         container_1.style.display = 'block';
         container_2.style.display = 'none';
       }else if (data == "human"){
-        container_2.style.display = 'none';
+        container_1.style.display = 'none';
         container_2.style.display = 'block';
       }
     };
