@@ -9,6 +9,8 @@ public class AirConsoleConnector : MonoBehaviour
 {
     public PlayerController[] players = new PlayerController[2];
 
+    public GameObject startPanel, endPanel, winScreen, loseScreen;
+
     private bool firstPlayerConnected = false;
     void Awake()
     {
@@ -139,22 +141,30 @@ public class AirConsoleConnector : MonoBehaviour
         players[1].controlledObject = GameObject.Find("VirusStart");
 
         InvokeRepeating("CheckGameOver", 0f, 0.5f);
+        startPanel.SetActive(false);
     }
 
 
     private void CheckGameOver(){
         GameLogic.instance.playtime -= 0.5f;
         if(GameLogic.instance.playtime == 0){
+            endPanel.SetActive(true);
             int winnerId = 0;
             if(GameLogic.instance.infectedCount >= GameLogic.instance.NPCsCountTotal){
                 //Virus win
+                loseScreen.SetActive(true);
+                winScreen.SetActive(false);
                 winnerId = players[1].controllerId;
             }else if(GameLogic.instance.quarantinedCount <= Mathf.RoundToInt((float) GameLogic.instance.NPCsCountTotal * 0.7f)){
                 //Virus win
+                loseScreen.SetActive(true);
+                winScreen.SetActive(false);
                 Debug.Log("virus win not enough quarantined");
                 winnerId = players[1].controllerId;
             }else{
                 //Human win
+                loseScreen.SetActive(false);
+                winScreen.SetActive(true);
                 winnerId = players[0].controllerId;
             }
 
