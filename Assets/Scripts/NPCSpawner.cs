@@ -9,6 +9,7 @@ public class NPCSpawner : MonoBehaviour
     public GameObject NPCPrefab;
 
     public int NPCCount = 50;
+    public int HumanPlayerCount = 5;
     // Start is called before the first frame update
 
     void Awake(){
@@ -18,6 +19,11 @@ public class NPCSpawner : MonoBehaviour
         for(int i = 0; i < NPCCount; i++){
             GameObject GO = Instantiate(NPCPrefab, GetRandomPoint(Vector3.zero, 30f), Quaternion.identity);
             GO.transform.SetParent(gameObject.transform);
+            GO.AddComponent<People>();
+            if(i < HumanPlayerCount){
+                GO.AddComponent<HumanPlayable>();
+            }
+            GameLogic.instance.NPCsCountTotal ++;
         }
     }
 

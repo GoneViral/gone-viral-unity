@@ -7,36 +7,20 @@ using Newtonsoft.Json.Linq;
 
 public class GameLogic : MonoBehaviour
 {
-    
-    void Awake()
+    public static GameLogic instance;
+    public int NPCsCountTotal = 2;
+    public int infectedCount = 1;
+    public int quarantinedCount = 0;
+
+    void Awake ()
     {
-        AirConsole.instance.onMessage += OnMessage;
-        
+        if (instance == null)
+            instance = this;  
+        else if (instance != this)
+            Destroy (gameObject);   
     }
 
-    void OnMessage(int fromDeviceID, JToken data){
-        Debug.Log("message from " + fromDeviceID + ", data: " + data);
-        if(data["action"] != null && data["action"].ToString().Equals("action"))
-        {
-            // in quarantaene schicken
-        }
-        else if (data["action"] != null && data["action"].ToString().Equals("switch"))
-        
-        {
-            // spieler wechseln
-        }
-    }
-    
-    //methode quarantaene
-    //wenn andere personen im umfeld radius x der gespielten person sind
-    //entferne andere spieler
-    //setze cooldown?
-    static void setQuarantaene(GameObject obj, Vector3 center)
-    {
-        
-    }
-    
-
+    /*
     //TODO implement showsSymptoms Boolean
     // Wird aufgerufen von infizierten Spieler wenn er hustet
     static void OnHustArea(GameObject obj, float fDirection, Vector3 center, float fRadius)
@@ -55,12 +39,6 @@ public class GameLogic : MonoBehaviour
                 }
             }
         }
-    }
+    }*/
 
-    void OnDestroy()
-    {
-        if(AirConsole.instance != null){
-            AirConsole.instance.onMessage -= OnMessage;
-        }
-    }
 }
