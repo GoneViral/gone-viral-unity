@@ -20,7 +20,7 @@ public class NPCSpawner : MonoBehaviour
             GameObject GO = Instantiate(NPCPrefab, GetRandomPoint(Vector3.zero, 30f), Quaternion.identity);
             GO.transform.SetParent(gameObject.transform);
             GO.AddComponent<People>();
-            GO.AddComponent<NPCHust>();
+            //GO.AddComponent<NPCHust>();
             if(i < HumanPlayerCount){
                 GO.AddComponent<HumanPlayable>();
             }

@@ -149,8 +149,9 @@ public class AirConsoleConnector : MonoBehaviour
             if(GameLogic.instance.infectedCount >= GameLogic.instance.NPCsCountTotal){
                 //Virus win
                 winnerId = players[1].controllerId;
-            }else if(GameLogic.instance.quarantinedCount <= GameLogic.instance.NPCsCountTotal/2){
+            }else if(GameLogic.instance.quarantinedCount <= Mathf.RoundToInt((float) GameLogic.instance.NPCsCountTotal * 0.7f)){
                 //Virus win
+                Debug.Log("virus win not enough quarantined");
                 winnerId = players[1].controllerId;
             }else{
                 //Human win
