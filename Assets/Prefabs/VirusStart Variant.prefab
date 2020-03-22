@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   counter: 2
+  infected: 1
   showsSymptoms: 1
   status: 2
   age: 0
