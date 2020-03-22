@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
             possibleVirus = GameObject.FindObjectsOfType<VirusPlayable>();
 
             int index = Random.Range(0, possibleVirus.Length);
-            controlledObject = possibleHumans[index].gameObject;
+            controlledObject = possibleVirus[index].gameObject;
         }
         int counter = controlledObject.GetComponent<People>().counter;
         return counter;

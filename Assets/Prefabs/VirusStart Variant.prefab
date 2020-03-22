@@ -18,6 +18,18 @@ MonoBehaviour:
   status: 2
   age: 0
   type: 
+--- !u!114 &5507220228412514326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 512971199503095877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94822a1c5a473a14094a608ebdd9edea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8106241069050910521
 PrefabInstance:
   m_ObjectHideFlags: 0
