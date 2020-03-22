@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public GameObject controlledObject;
     public int controllerId = -1;
 
+    public int radius = 4;
     public PlayerType type;
 
     private HumanPlayable[] possibleHumans;
@@ -38,5 +39,36 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void Action(){
+        if(type == PlayerType.Virus){
+            return;
+        }
+        else if(type == PlayerType.Human){
+            setQuarantine();
+        }
+    }
+
+    private void setQuarantine(){
+        Vector3 center = controlledObject.transform.position;
+        Collider[] hitColliders = Physics.OverlapSphere(center, radius);
+        int i = 0;
+        Debug.Log("hit" + hitColliders.Length);
+        while (i < hitColliders.Length)
+        {
+            if (hitColliders[i].gameObject != controlledObject && hitColliders[i].gameObject.GetComponent<People>() != null)
+            {
+                Debug.Log("setting in quarantine");
+                People p = hitColliders[i].gameObject.GetComponent<People>();
+                p.status = Status.InQuarantine;
+
+                NPCRandomWalk agent = hitColliders[i].gameObject.GetComponent<NPCRandomWalk>();
+                if(agent != null){
+                    agent.enabled = false;
+                }
+            }
+            Debug.Log("done with quarantine");
+            i++;
+        }
+    }
 
 }
