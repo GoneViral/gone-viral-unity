@@ -122,6 +122,8 @@ public class AirConsoleConnector : MonoBehaviour
         // a sceneBuildIndex of 1 as shown in Build Settings.
 
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("Level", LoadSceneMode.Additive);
+        SceneManager.LoadSceneAsync("GameScene_Graph", LoadSceneMode.Additive);
+
 
         // Wait until the asynchronous scene fully loads
         while (!asyncLoad.isDone)
