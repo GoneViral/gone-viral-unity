@@ -20,9 +20,11 @@ public class People : MonoBehaviour
     private static Double CtDie = 0.2;
     //chance to show symptoms
     private static Double CtshowSymptoms = 0.4;
+
+    public int counter;
         
     
-        private Boolean infected;
+        public Boolean infected;
         public Boolean showsSymptoms;
         public Status status;
         public int age;
@@ -104,7 +106,7 @@ public class People : MonoBehaviour
         }
 
         //calculates if this person shows symptoms
-        Boolean showingSymptoms()
+        public Boolean showingSymptoms()
         {
             if (new Random().NextDouble() < CtshowSymptoms)
             {
@@ -127,7 +129,11 @@ public class People : MonoBehaviour
         {
             return this.infected;
         }
-        
-        
-        
-    }
+
+        public void AddVirus(float fRange)
+        {
+            setToInfected();
+            GameLogic.instance.infectedCount++;
+            gameObject.AddComponent<VirusPlayable>();
+        }
+}
