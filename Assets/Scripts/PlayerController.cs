@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
     public PlayerType type;
 
     private HumanPlayable[] possibleHumans;
+
+    private VirusPlayable[] possibleVirus;
     private int possibleHumansID = 0;
 
     public void Move(Vector3 direction){
@@ -36,6 +38,12 @@ public class PlayerController : MonoBehaviour
             if(possibleHumansID > possibleHumans.Length -1 ) possibleHumansID = 0;
 
             controlledObject = possibleHumans[possibleHumansID].gameObject;
+        }
+        else if(type == PlayerType.Virus){
+            possibleVirus = GameObject.FindObjectsOfType<VirusPlayable>();
+
+            int index = Random.Range(0, possibleVirus.Length);
+            controlledObject = possibleHumans[index].gameObject;
         }
     }
 
