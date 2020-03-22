@@ -20,6 +20,8 @@ public class People : MonoBehaviour
     private static Double CtDie = 0.2;
     //chance to show symptoms
     private static Double CtshowSymptoms = 0.4;
+
+    public int counter;
         
     
         private Boolean infected;
