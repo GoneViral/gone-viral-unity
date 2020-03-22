@@ -132,6 +132,9 @@ public class People : MonoBehaviour
 
         public void AddVirus(float fRange)
         {
+            if (getInfected())
+                return;
+            
             setToInfected();
             GameLogic.instance.infectedCount++;
             gameObject.AddComponent<VirusPlayable>();
