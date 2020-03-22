@@ -55,18 +55,17 @@ public class PlayerController : MonoBehaviour
         Debug.Log("hit" + hitColliders.Length);
         while (i < hitColliders.Length)
         {
-            if (hitColliders[i].gameObject != controlledObject && hitColliders[i].gameObject.GetComponent<People>() != null)
+            if (hitColliders[i].gameObject != controlledObject && hitColliders[i].gameObject.GetComponent<People>() != null && hitColliders[i].gameObject.GetComponent<People>().status != Status.InHospital)
             {
-                Debug.Log("setting in quarantine");
                 People p = hitColliders[i].gameObject.GetComponent<People>();
                 p.status = Status.InQuarantine;
+                GameLogic.instance.quarantinedCount ++;
 
                 NPCRandomWalk agent = hitColliders[i].gameObject.GetComponent<NPCRandomWalk>();
                 if(agent != null){
                     agent.enabled = false;
                 }
             }
-            Debug.Log("done with quarantine");
             i++;
         }
     }

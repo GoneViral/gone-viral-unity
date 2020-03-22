@@ -23,6 +23,7 @@ public class NPCSpawner : MonoBehaviour
             if(i < HumanPlayerCount){
                 GO.AddComponent<HumanPlayable>();
             }
+            GameLogic.instance.NPCsCountTotal ++;
         }
     }
 
