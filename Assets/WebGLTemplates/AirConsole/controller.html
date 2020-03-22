@@ -151,7 +151,7 @@
     <div class="top-bar"  style="background-color: blue">
       <div class="text">
           MENSCH: Dein Ziel ist es den Virus einzud&auml;mmen! <br/>
-          Setze Gruppen unter Quarantäne. Bleib gesund!
+          Setze Gruppen unter Quarant&auml;ne. Bleib gesund!
       </div>
     </div>
     
@@ -182,8 +182,8 @@
   </div>
 
 
-<!--
-  <div id ="start-screen">
+
+   <div id ="start-screen">
       <div class="top-bar"  style="background-color: grey">
           <div class="text">
               GONE VIRAL <br/>
@@ -227,20 +227,23 @@
       </div>
 
       <div class="start-button" ontouchstart="window.app.sendMessageToScreen('start')" style="background-color: grey">RESTART</div>    
-  </div>
--->
+  </div> 
+
 
 </body>
 
 <script type="text/javascript">
 
-  var airconsole;
-  
-  var container_1 = document.getElementById("gamepad-1");
+var container_1 = document.getElementById("gamepad-1");
   var container_2 = document.getElementById("gamepad-2");
+  var startScreen = document.getElementById("start-screen");
+  var endScreenLoose = document.getElementById("end-screen-loose");
+  var endScreenWin = document.getElementById("end-screen-win");
 
-  container_1.style.display = 'block';
+  container_1.style.display = 'none';
   container_2.style.display = 'none';
+  endScreenLoose.style.display = 'none';
+  endScreenWin.style.display = 'none';
 
   function App() {
 
@@ -250,13 +253,23 @@
       console.log("onMessage", from, data);
       if(data == "virus"){
         container_1.style.display = 'none';
+        startScreen.style.display = 'none';
         container_2.style.display = 'block';
       }else if (data == "human"){
         container_1.style.display = 'block';
+        startScreen.style.display = 'none';
         container_2.style.display = 'none';
       }
       else if(data["action"] == "setNPC"){
         console.log("new controlled npc is " + data["info"]["id"]);
+      }else if(data["action"] == "gameOver"){
+        container_1.style.display = 'none';
+        container_2.style.display = 'none';
+        if(data["win"] == true){
+          endScreenWin.style.display = 'block';
+        }else{
+          endScreenLoose.style.display = 'block';
+        }
       }
     };
     
